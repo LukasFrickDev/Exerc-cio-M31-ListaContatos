@@ -34,17 +34,6 @@ export const contatoSlice = createSlice({
       const contatoExistenteEmail = state.contato.find(
         (c) => c.email === contato.email
       )
-      const telefoneLimpo = contato.telefone.replace(/\D/g, '')
-      if (telefoneLimpo.length < 10 || telefoneLimpo.length > 11) {
-        alert('O telefone está incorreto, deve conter DDD.')
-        return
-      }
-
-      // Verificar se o e-mail contém "@"
-      if (!contato.email.includes('@')) {
-        alert('O e-mail deve conter "@" para ser válido.')
-        return
-      }
       if (!contatoExistenteTelefone && !contatoExistenteEmail) {
         const ultimoContato = state.contato[state.contato.length - 1]
         const novoContato = {

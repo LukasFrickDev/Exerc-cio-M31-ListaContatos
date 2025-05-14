@@ -14,6 +14,21 @@ const Formulario = () => {
 
   const cadastrarContato = (evento: FormEvent) => {
     evento.preventDefault()
+    const telefoneLimpo = telefone.replace(/\D/g, '')
+    if (nome === '') {
+      alert('Você precisa preencher os campos')
+      return
+    }
+    if (telefoneLimpo.length < 10 || telefoneLimpo.length > 11) {
+      alert(
+        'O telefone está incorreto, deve conter DDD e no máximo 11 digitos.'
+      )
+      return
+    }
+    if (!email.includes('@')) {
+      alert('O e-mail deve ser válido e conter "@".')
+      return
+    }
     dispatch(adicionarContato({ nome, telefone, email }))
     navigate('/')
   }
